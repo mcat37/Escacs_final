@@ -13,6 +13,7 @@
 
     <?php include("includes/header.php"); ?>
     <main>
+        <div id="canv" class="canvas">
         <div id="container">
             <div id="turn-indicator">Turno: Blancas</div>
             <div class="info-top">
@@ -83,8 +84,9 @@
             <!-- <button id="undo">Undo</button>
             <button id="redo">Redo</button> -->
         </div> 
+    </div>
 </main>
-
+<script src="js/matrix.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
