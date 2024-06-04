@@ -17,10 +17,10 @@ function matrix () {
   ctx.font = '15pt monospace';
   
   ypos.forEach((y, ind) => {
-    const text = String.fromCharCode(Math.random() * 128);
+    const text = "♔♕♖♗♘♙";
     const x = ind * 20;
     ctx.fillText(text, x, y);
-    if (y > 100 + Math.random() * 10000) ypos[ind] = 0;
+    if (y > 100 + Math.random() * 1000) ypos[ind] = 0;
     else ypos[ind] = y + 20;
   });
 }
