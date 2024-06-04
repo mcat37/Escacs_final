@@ -16,7 +16,10 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
 
     <?php include("includes/header.php"); ?>
     <main>  
+        <canvas id="canv">
         <div id="container">
+
+            
             <!-- <div id="turn-indicator">Turno: Blancas</div> -->
             <h3 class="h3">
                   Muy bienvenidxs <?php echo $_SESSION['nom_public'] ?>
@@ -89,9 +92,11 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
             <!-- <button id="undo">Undo</button>
             <button id="redo">Redo</button> -->
         </div> 
+        </canvas>
 </main>
 
 <script src="js/script.js"></script>
+<script src="js/matrix.js"></script>
 </body>
 </html>
 <?php else: ?>
