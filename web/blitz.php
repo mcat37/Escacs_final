@@ -23,11 +23,11 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
     </div>
     <main>
         <div id="container">
-        <h1 class="display-4 text-center  text-primary">Benvingut <?php echo $_SESSION['nom_public']?></h1>
-            <div id="turn-indicator">Turno: Blancas</div>
+        <h1 class="display-4 text-center  text-primary">Muy bienvenidxs <?php echo $_SESSION['nom_public']?></h1>
+            <!-- <div id="turn-indicator">Turno: Blancas</div> -->
             <div id="countdowns" class="countdowns">
-                <div id="countdown1" class="countdownW">Blancas : 03:00 </div>
-                <div id="countdown2" class="countdownB">Negras : 03:00 </div>
+                <!-- <div id="countdown1" class="countdownW">Blancas : 03:00 </div>
+                <div id="countdown2" class="countdownB">Negras : 03:00 </div> -->
             </div>
             <div class="info-top">
                 <div class="info">

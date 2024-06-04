@@ -80,8 +80,8 @@
             </div>
         <div id="buttons">
             <button id="new-game">New Game</button>
-            <button id="undo">Undo</button>
-            <button id="redo">Redo</button>
+            <!-- <button id="undo">Undo</button>
+            <button id="redo">Redo</button> -->
         </div> 
 </main>
 

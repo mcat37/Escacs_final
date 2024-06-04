@@ -61,9 +61,10 @@
             </div></div> 
 
             <div class="butons">
-                <button type="button" class="btn2" >Registrate</button>
-                <a class="link2" href="index.php" >Inicia sessión</a>
-            </div>
+               <button type="submit" class="btn2">Registrate</button>
+             <a class="link2" href="index.php">Inicia sessión</a>
+           </div>
+
 
 </div>
         </form>

@@ -17,9 +17,9 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
     <?php include("includes/header.php"); ?>
     <main>  
         <div id="container">
-            <div id="turn-indicator">Turno: Blancas</div>
+            <!-- <div id="turn-indicator">Turno: Blancas</div> -->
             <h3 class="h3">
-                  Molt benvingut <?php echo $_SESSION['nom_public'] ?>
+                  Muy bienvenidxs <?php echo $_SESSION['nom_public'] ?>
                 </h3>
             <div class="info-top">
                 <div class="info">
@@ -86,8 +86,8 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
             </div>
         <div id="buttons">
             <button id="new-game">New Game</button>
-            <button id="undo">Undo</button>
-            <button id="redo">Redo</button>
+            <!-- <button id="undo">Undo</button>
+            <button id="redo">Redo</button> -->
         </div> 
 </main>
 
