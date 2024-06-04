@@ -7,7 +7,7 @@ body {
     display: grid;
     place-items: center;
     height: 100vh;
-    background-color: #ffffff;
+    background-color: #e0e0e0;
     margin: 0;
     align-items: center;
     justify-content: center;
@@ -16,7 +16,7 @@ body {
 header{
     height: 100vh;
     padding: 25px;
-    background-color: rgb(255, 255, 255);
+    background-color: #e0e0e0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +32,14 @@ h1{
     font-weight: 600;
     color: rgb(255, 255, 255);
     text-shadow: 5px 5px 15px black;
+}
+#canv{
+    position: fixed;
+    width: 100% ;
+    top: 0;
+    left: 0 ;
+    z-index: -100;
+
 }
 #menu{
     display: flex;
@@ -172,7 +180,22 @@ h1{
 }
 .check{
     background-color: rgb(250, 136, 145);
+    animation: checked 0.5s linear infinite;
 }
+@keyframes checked {
+    0% {
+        background-color: #f7afb5;
+        transform: scale(1) rotate(90deg);
+    }
+    50%{
+        transform: scale(1.2) rotate(90deg);
+    }
+    100% {
+        transform: scale(1) rotate(90deg);
+        background-color: rgb(250, 35, 53);
+    }
+}
+    
 
 /* .label {
     display: flex;
@@ -233,15 +256,16 @@ button{
     cursor: pointer;
     border-radius: 40px;
     border: none;
-    background: #e0e0e0;
-    box-shadow:  20px 20px 60px #bebebe,
-                 -20px -20px 60px #ffffff;
+    border-radius: 50px;
+background: linear-gradient(145deg, #f0f0f0, #cacaca);
+box-shadow:  23px 23px 46px #cccccc,
+             -23px -23px 46px #f4f4f4;
 }
 button:active{
     border-radius: 50px;
     background: #769656;
-    box-shadow:  20px 20px 60px #bebebe,
-                 -20px -20px 60px #ffffff;
+    box-shadow:  inset 8px 8px 16px #576f40,
+    inset -8px -8px 16px #95bd6c;
 }
 
 footer{
@@ -287,7 +311,7 @@ footer{
     gap: 10px;
     margin: 5px;
     font-size: 1rem;
-    color:#eeeed2;
+    color:#aaa;
 }
 .info-bottom .info{
     color: #000;

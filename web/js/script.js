@@ -236,8 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // el rey esta en Check?
             if (isKingInCheck(color)) {
-                rey = piece.getAttribute("data-type") === "Rey";
-                piece.classList.add("check");
                 // revierte el movimiento siempre que el rey este peligro
                 original.appendChild(piece);
                 return;
@@ -248,7 +246,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateTurnIndicator();
             rotatePieces();
             piece.classList.remove("selected");
-            playTimer();
             selectedPiece = null;
             console.log(fromX, fromY, toX, toY);
             
@@ -374,9 +371,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const fromX = parseInt(piece.parentElement.dataset.x, 10);
             const fromY = parseInt(piece.parentElement.dataset.y, 10);
             if (isValidMove(pieceType, opponentColor, fromX, fromY, kingX, kingY)) {
+                king.classList.add("check");
                 return true;  //rey en jake
             }
         }
+        king.classList.remove("check");
         return false;
     }
     function updateTurnIndicator() {
