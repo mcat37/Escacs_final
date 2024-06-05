@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     let x = fromX + xIncrement;
                     let y = fromY + yIncrement;
                     while (x !== toX && y !== toY) {
-                        if (isObstacles(x,y)) {
+                        if (isObstacle(x,y)) {
                             return false; // There is a piece in the way
                         }
                         x += xIncrement;
