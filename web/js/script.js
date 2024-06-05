@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //meter en una database lo siguiente para que quede guardado y luego sacarlo por pantalla
         //de manera temporal lo haremos así para ver que funciona
         if (whiteTurn) {
-                const historialText = num + '. ' + piece.toUpperCase().charAt(0)+ toL + toN;
+                const historialText = "\n<a>" + num + '. ' + piece.toUpperCase().charAt(0)+ toL + toN + "\n</a>";
                 //insert into partida where id='id partida'(peça, de, a) values (?,?,?)
                  //piece tol toN{id}
                  
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 historialLeft.textContent = historialUndo.join('\n');
             }
         else{
-            const historialText = num + '. ' + piece.toUpperCase().charAt(0)+ toL + toN;
+            const historialText = "<a>" + num + '. ' + piece.toUpperCase().charAt(0)+ toL + toN + "</a>";
             const historialUndo =  historialRight.textContent.split('\n');
             historialUndo.push(historialText);
             historialRight.textContent = historialUndo.join('\n');
