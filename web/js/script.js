@@ -317,13 +317,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     return true;
                 }
                 case "Torre":
-                    if (fromX === toX) {
+                    if (fromY === toY) {
                         for (let y = minY + 1; y < maxY; y++) {
                             if (document.querySelector(`[data-x="${fromX}"][data-y="${y}"] .piece`)) {
                                 return false;
                             }
                         }
-                    } else if (fromY === toY) {
+                    } else if (fromX === toX) {
                         for (let x = minX + 1; x < maxX; x++) {
                             if (document.querySelector(`[data-x="${x}"][data-y="${fromY}"] .piece`)) {
                                 return false;
