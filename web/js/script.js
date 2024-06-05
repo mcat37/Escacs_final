@@ -272,12 +272,18 @@ document.addEventListener("DOMContentLoaded", () => {
             return false;
         };
         //hay obstaculos en el camino ?
-        const isObstacle = (x, y) => {
+        /* const isObstacle = (x, y) => {
             const piece = document.querySelector(`[data-x="${x}"][data-y="${y}"] .piece`);
             if (piece) {
                 return true;
             }
             return false;
+        }; 
+        
+        */
+        const isObstacle = (x, y) => {
+            const piece = document.querySelector(`[data-x="${x}"][data-y="${y}"] .piece`);
+            return piece !== null;
         };
         //hay obstaculos en el camino?
         //logica basica de movimiento de las piezas
