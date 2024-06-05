@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 historialLeft.textContent = historialUndo.join('\n');
             }
         else{
-            const historialText = "<a>" + num + '. ' + piece.toUpperCase().charAt(0)+ toL + toN + "</a>";
+            const historialText =  num + '. ' + piece.toUpperCase().charAt(0)+ toL + toN;
             const historialUndo =  historialRight.textContent.split('\n');
             historialUndo.push(historialText);
             historialRight.textContent = historialUndo.join('\n');
