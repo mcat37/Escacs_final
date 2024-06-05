@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         //meter en una database lo siguiente para que quede guardado y luego sacarlo por pantalla
         //de manera temporal lo haremos así para ver que funciona
         if (whiteTurn) {
-                const historialText = "\n<a>" + num + '. ' + piece.toUpperCase().charAt(0)+ toL + toN + "\n</a>";
+                const historialText =  num + '. ' + piece.toUpperCase().charAt(0)+ toL + toN ;
                 //insert into partida where id='id partida'(peça, de, a) values (?,?,?)
                  //piece tol toN{id}
                  
@@ -310,9 +310,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     return true;
                 }
-            case "Torre":
-               return fromX === toX || fromY === toY; //original
-
+                case "Torre":
+                    if (fromX === toX) {
+                        for (let y = minY + 1; y < maxY; y++) {
+                            if (isObstacle(fromX, y)) {
+                                return false;
+                            }
+                        }
+                    } else if (fromY === toY) {
+                        for (let x = minX + 1; x < maxX; x++) {
+                            if (isObstacle(x, fromY)) {
+                                return false;
+                            }
+                        }
+                    }
+               //return fromX === toX || fromY === toY; //original
             case "Alfil":
                 if (Math.abs(toX - fromX) === Math.abs(toY - fromY)) {
                     let x = fromX + xIncrement;
