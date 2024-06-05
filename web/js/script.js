@@ -317,18 +317,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     return true;
                 }
                 case "Torre":
-                    if (fromY === toY) {
+                    if (fromX === toX) {
                         for (let y = minY + 1; y < maxY; y++) {
-                            if (document.querySelector(`[data-x="${fromX}"][data-y="${y}"] .piece`)) {
+                            if (isObstacle(fromX, y)) {
                                 return false;
                             }
                         }
-                    } else if (fromX === toX) {
+                    } else if (fromY === toY) {
                         for (let x = minX + 1; x < maxX; x++) {
-                            if (document.querySelector(`[data-x="${x}"][data-y="${fromY}"] .piece`)) {
+                            if (isObstacle(x, fromY)) {
                                 return false;
                             }
                         }
+                        return true;
                     }
                //return fromX === toX || fromY === toY; //original
             case "Alfil":
