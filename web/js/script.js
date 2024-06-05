@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return false;
         };
         //hay obstaculos en el camino ?
-        /* const isObstacle = (x, y) => {
+        const isObstacle = (x, y) => {
             const piece = document.querySelector(`[data-x="${x}"][data-y="${y}"] .piece`);
             if (piece) {
                 return true;
@@ -280,11 +280,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return false;
         }; 
         
-        */
-        const isObstacle = (x, y) => {
-            const piece = document.querySelector(`[data-x="${x}"][data-y="${y}"] .piece`);
-            return piece !== null;
-        };
         //hay obstaculos en el camino?
         //logica basica de movimiento de las piezas
         // Falta añadir las reglas basicas
@@ -295,19 +290,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 if(fromX === toX || fromY === toY || Math.abs(toX - fromX) === Math.abs(toY - fromY)){
                     if (fromX === toX) {
                         for (let y = minY + 1; y < maxY; y++) {
-                            if (document.querySelector(`[data-x="${fromX}"][data-y="${y}"] .piece`)) {
+                            if (isObstacle(fromX,y)) {
                                 return false;
                             }
                         }
                     } else if (fromY === toY) {
                         for (let x = minX + 1; x < maxX; x++) {
-                            if (document.querySelector(`[data-x="${x}"][data-y="${fromY}"] .piece`)) {
+                            if (isObstacle(x,fromY)) {
                                 return false;
                             }
                         }
                     } else {
                         while (x !== toX && y !== toY) {
-                            if (document.querySelector(`[data-x="${x}"][data-y="${y}"] .piece`)) {
+                            if (isObstacle(x,y)) {
                                 return false; // Hay una pieza en el camino
                             }
                             x += xIncrement;
@@ -316,28 +311,46 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     return true;
                 }
-                case "Torre":
-                    if (fromX === toX) {
-                        for (let y = minY + 1; y < maxY; y++) {
-                            if (isObstacle(fromX, y)) {
-                                return false;
+                 case "Torre":
+                        if (fromX === toX) {
+                            for (let y = minY + 1; y < maxY; y++) {
+                                if (isObstacle(fromX, y)) {
+                                    return false;
+                                }
                             }
-                        }
-                    } else if (fromY === toY) {
-                        for (let x = minX + 1; x < maxX; x++) {
-                            if (isObstacle(x, fromY)) {
-                                return false;
+                            return true;
+                        } else if (fromY === toY) {
+                            for (let x = minX + 1; x < maxX; x++) {
+                                if (isObstacle(x, fromY)) {
+                                    return false;
+                                }
                             }
+                            return true;
                         }
-                        return true;
-                    }
+                //  funciona
+            // if (fromX === toX) {
+            //     for (let y = minY + 1; y < maxY; y++) {
+            //         if (document.querySelector(`[data-x="${fromX}"][data-y="${y}"] .piece`)) {
+            //             return false; // Hay una pieza en el camino
+            //         }
+            //     }
+            //     return true;
+            // } else if (fromY === toY) {
+            //     for (let x = minX + 1; x < maxX; x++) {
+            //         if (document.querySelector(`[data-x="${x}"][data-y="${fromY}"] .piece`)) {
+            //             return false; // Hay una pieza en el camino
+            //         }
+            //     }
+            //     return true;
+            // }
+            // return false;
                //return fromX === toX || fromY === toY; //original
             case "Alfil":
                 if (Math.abs(toX - fromX) === Math.abs(toY - fromY)) {
                     let x = fromX + xIncrement;
                     let y = fromY + yIncrement;
                     while (x !== toX && y !== toY) {
-                        if (document.querySelector(`[data-x="${x}"][data-y="${y}"] .piece`)) {
+                        if (isObstacles(x,y)) {
                             return false; // There is a piece in the way
                         }
                         x += xIncrement;
@@ -353,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (color === "white") {
                 if (toX === fromX) {
                     if (toY === fromY + 1) {
-                        return !document.querySelector(`[data-x="${toX}"][data-y="${toY}"] .piece`);
+                        return !isObstacle(toX,toY);
                     } else if (fromY === 1 && toY === fromY + 2) {
                         return !document.querySelector(`[data-x="${toX}"][data-y="${toY}"] .piece`) && !document.querySelector(`[data-x="${toX}"][data-y="${fromY + 1}"] .piece`);
                     }
