@@ -12,10 +12,39 @@ body {
     justify-content: center;
 
 }
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #ccc;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  .sidenav a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+  }
 header{
-    height: 100vh;
-    padding: 25px;
-    background-color: #e0e0e0;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,7 +52,7 @@ header{
     top: 0;
     left: 0;
     z-index: 100;
-    box-shadow: 0px 0px 2px black;
+    font-size: 2rem;
 }
 h1{
     font-size: 48px;
@@ -31,6 +60,10 @@ h1{
     font-weight: 600;
     color: rgb(255, 255, 255);
     text-shadow: 5px 5px 15px black;
+}
+header h1{
+    border-bottom: 5px solid white;
+    border-bottom-style: groove;
 }
 #canv{
     position: fixed;
@@ -46,8 +79,6 @@ h1{
     display: flex;
     flex-direction: column;
     position: relative;
-    right: 0;
-    top: 0;
     gap: 30px;
     margin: 10px;
     padding: 10px;
@@ -331,6 +362,10 @@ footer{
 }
 .info-bottom .info{
     color: #000;
+}
+.dark-theme{
+    background-color: #28292c;
+    color: #fff;
 }
 
 

@@ -52,3 +52,47 @@ checkbox.addEventListener("click", () => {
   }
 
 });
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "500px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+// //test para cambio de aspecto
+// document.getElementById("changeStyleBtn").addEventListener("click", function() {
+//     // Buscar el elemento <style> existente en el documento
+//     var styleElement = document.querySelector("style#boardStyle");
+    
+//     // Si no se encuentra el elemento <style> con id "boardStyle", crear uno nuevo
+//     if (!styleElement) {
+//         styleElement = document.createElement("style");
+//         styleElement.id = "boardStyle";
+//         document.head.appendChild(styleElement);
+//     }
+    
+//     // Obtener la hoja de estilos
+//     var styleSheet = styleElement.sheet;
+
+//     // Si la hoja de estilos ya tiene reglas, borrarlas
+//     while (styleSheet.rules.length > 0) {
+//         styleSheet.deleteRule(0);
+//     }
+
+//     // Añadir la regla de estilo dependiendo del estado actual del tablero
+//     var newStyle = ".row-even .square:nth-child(odd),.row-odd .square:nth-child(even) {background-color: #769656;}";
+//     var newStyle2 = ".row-even .square:nth-child(even),.row-odd .square:nth-child(odd) {background-color: #eeeed2;}";
+//     if (styleElement.dataset.style === "alt") {
+//       newStyle = ".row-even .square:nth-child(odd),.row-odd .square:nth-child(even) { background-color: black;}";
+//       newStyle2 = ".row-even .square:nth-child(even),.row-odd .square:nth-child(odd) {background-color: white;}";
+//         styleElement.dataset.style = "";
+//     } else {
+//         styleElement.dataset.style = "alt";
+//     }
+
+//     // Añadir la nueva regla de estilo a la hoja de estilos
+//     styleSheet.insertRule(newStyle, 0);
+// });
