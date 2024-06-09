@@ -1,7 +1,7 @@
 <header>
     <div id="mySidenav" class="sidenav">
     <a class="closebtn" onclick="closeNav()">&times;</a>
-        <h1>Chess Game</h1>
+        <h1 id="game-title">Chess Game</h1>
         <nav id="menu">
                 <a href="playS.php"><button id="classic">Classic</button></a>
                 <a href="blitz.php"><button id="blitz">Blitz</button></a>

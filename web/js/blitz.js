@@ -97,13 +97,17 @@
         placePieces();
         whiteTurn = true;
         // falta poner aqui el reinico del timer
-        tiempoTotalBlanco = 60 * 3; //revisar el
-        tiempoTotalNegro = 60 * 3; //revisar el
+        tiempoTotalBlanco = 60 * 3; 
+        tiempoTotalNegro = 60 * 3; 
         playTimer();
         clearInterval(intervaloNegro);
         clearInterval(intervaloBlanco);
         blancas.innerHTML = "Blancas : 03:00"; //
         negras.innerHTML = "Negras : 03:00"; //
+        negras.classList.remove("blink-last"); //
+        blancas.classList.remove("blink-last"); //
+        negras.classList.remove("blink"); //
+        blancas.classList.remove("blink"); //
 
         //Reinicio del indicador de turno
         updateTurnIndicator();
@@ -433,9 +437,10 @@
     let intervaloBlanco; // Variable para el intervalo del jugador blanco
     let intervaloNegro; // Variable para el intervalo del jugador negro
     let tiempoTotalBlanco = 60 * 3; // 3 minutos en segundos para el jugador blanco
-    let tiempoTotalNegro = 60 * 3; // 3 minutos en segundos para el jugador negro
+    let tiempoTotalNegro = 60 ; // 3 minutos en segundos para el jugador negro
     
     function playTimer() {
+        
         // Variables
         const incremento = 1; // Un segundo de incremento por movimiento
         clearInterval(intervaloNegro);
@@ -444,18 +449,29 @@
             //cambio de funciones al negro
             console.log("¡Turno del jugador negro !");
             tiempoTotalBlanco += incremento;
-            //aqui funciones del blanco
+            //aqui funciones del negro
+            negras.classList.add("blink");
+            blancas.classList.remove("blink");
             intervaloNegro = setInterval(() => {
                 tiempoTotalNegro--; // Decrementar el tiempo del jugador
                 console.log("Tiempo restante para el jugador negro :", tiempoTotalNegro);
                 let minutes = Math.floor(tiempoTotalNegro / 60);
                 let seconds = tiempoTotalNegro % 60;
-                negras.textContent = `Negras : ${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+                negras.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+                blancas.classList.remove("blink");
+                if (tiempoTotalNegro <= 10){
+                    negras.classList.add("blink-last");
+                }
+                else{
+                    negras.classList.remove("blink-last");
+                }
                 if (tiempoTotalNegro <= 0){
+                    alert('El tiempo de las Negras a terminado, GANAN LAS BLANCAS!');
+                    console.log("¡Tiempo agotado para el jugador negro !");
                     clearInterval(intervaloBlanco);
                     clearInterval(intervaloNegro);
-                    console.log("¡Tiempo agotado para el jugador negro !");
-                    alert('El tiempo de las Negras a terminado, GANAN LAS BLANCAS!');
+                    negras.classList.remove("blink-last");
+                    negras.classList.remove("blink");
                     // Aquí agregar la lógica para finalizar el juego o tomar otras acciones
                 }
             }, 1000); // Ejecutar cada segundo
@@ -463,18 +479,29 @@
         } else if (whiteTurn) {
             console.log("¡Turno del jugador blanco !");
             tiempoTotalNegro += incremento;
+            negras.classList.remove("blink");
+            blancas.classList.add("blink");
             //funciones del negro
             intervaloBlanco = setInterval(() => {
                 tiempoTotalBlanco--; // Decrementar el tiempo del jugador
                 let minutes = Math.floor(tiempoTotalBlanco / 60);
                 let seconds = tiempoTotalBlanco % 60;
-                blancas.textContent = `Blancas : ${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+                blancas.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
                 console.log("Tiempo restante para el jugador blanco :", tiempoTotalBlanco);
+                negras.classList.remove("blink");
+                if (tiempoTotalBlanco <= 10){
+                    blancas.classList.add("blink-last");
+                }
+                else{
+                    blancas.classList.remove("blink-last");
+                }
                 if (tiempoTotalBlanco <= 0){
                     clearInterval(intervaloBlanco);
                     clearInterval(intervaloNegro);
                     console.log("¡Tiempo agotado para el jugador blanco !");
                     alert('El tiempo de las Blancas a terminado, GANAN LAS NEGRAS!');
+                    blancas.classList.remove("blink-last");
+                    blancas.classList.remove("blink");
                     // Aquí agregar la lógica para finalizar el juego o tomar otras acciones
                 }
             }, 1000); // Ejecutar cada segundo

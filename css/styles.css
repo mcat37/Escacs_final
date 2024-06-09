@@ -215,6 +215,10 @@ header h1{
     background-color: rgb(250, 136, 145);
     animation: checkedB 0.5s linear infinite;
 }
+.checkMate{
+    background-color: rgb(249, 12, 32);
+}
+
 @keyframes checkedW {
     0% {
         background-color: #f7afb5;
@@ -300,12 +304,11 @@ button{
     letter-spacing: 2px;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 40px;
     border: none;
     border-radius: 50px;
-background: linear-gradient(145deg, #f0f0f0, #cacaca);
-box-shadow:  23px 23px 46px #cccccc,
-             -23px -23px 46px #f4f4f4;
+    background: linear-gradient(145deg, #f0f0f0, #cacaca);
+    box-shadow:  5px 5px 20px #cccccc,
+                -5px -5px 20px #f4f4f4;
 }
 button:active{
     border-radius: 50px;
@@ -335,10 +338,37 @@ footer{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    gap: 10px;
-    margin-top: 25px;
-    font-size: 4rem;
-    color: white;
+    gap: 10px; 
+    font-size: 4dvw;
+    color: rgb(0, 0, 0);
+    text-shadow: 0px 0px 15px black;
+}
+.blink{
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.blink-last{
+    animation: blinker-last 1s linear infinite;
+}
+
+@keyframes blinker-last {
+    
+    0% {
+        color:red;
+        opacity: 0;
+    }
+    100% {
+        color:red;
+        opacity: 1;
+    }
 }
 .info-top, .info-bottom{
     width: 100%;
@@ -363,7 +393,7 @@ footer{
     color: #000;
 }
 .dark-theme{
-    background-color: #28292c;
+    background-color: #101010;
     color: #fff;
 }
 

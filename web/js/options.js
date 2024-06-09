@@ -35,6 +35,8 @@ const checkbox = document.getElementById("checkbox");
     // document.getElementById("chessboard").style.color = "white";
     document.getElementById("turn-indicator").style.color = "white";
     document.getElementById("canv").classList.add('dark-theme');
+    document.getElementById("mySidenav").classList.add('dark-theme');
+    document.getElementById("game-title").style.borderBottom = "5px groove black";
 
     }
     function light(){
@@ -42,6 +44,8 @@ const checkbox = document.getElementById("checkbox");
       // document.getElementById("chessboard").style.color = "black";
       document.getElementById("turn-indicator").style.color = "black";
       document.getElementById("canv").classList.remove('dark-theme');
+      document.getElementById("mySidenav").classList.remove('dark-theme');
+      document.getElementById("game-title").style.borderBottom = "5px groove white";
       }
 checkbox.addEventListener("click", () => {
     if(checkbox.checked){
