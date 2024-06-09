@@ -73,8 +73,6 @@ header h1{
     left: 0 ;
     z-index: -100;
 }
-
-
 #menu{
     display: flex;
     flex-direction: column;
@@ -99,7 +97,8 @@ header h1{
     margin: 10px auto;
 
 }
-#overlay{
+/* overlay en desuso por el momento */
+/* #overlay{
     position: absolute;
     flex-direction: column;
     align-items: center;
@@ -111,14 +110,14 @@ header h1{
     height: 80%;
     z-index: 10;
     color: white;
-}
+} */
 #chessboard {
     width: max-content;
     height: max-content ;
     display: grid;
     /* aqui podemos elegir el tamaño del tablero */
-    grid-template-columns: repeat(8, 80px); 
-    grid-template-rows: repeat(8, 80px);
+    grid-template-columns: repeat(8, 4.25vw);  /* usamos vh para que se vuelva responsive */
+    grid-template-rows: repeat(8, 4.25vw);
     gap: 0;
     border: 5px solid #000000;
     transform: rotate(-90deg); /* Rotate the board */
@@ -129,8 +128,8 @@ header h1{
 }
 #historial{
     display: grid;
-    grid-template-columns: repeat(2, 100px);
-    grid-template-rows: repeat(1, 480px);
+    grid-template-columns: repeat(2, 8vw);
+    grid-template-rows: repeat(1, 30vw);
     background-color: rgb(255, 255, 255);
     gap: 2px;
     margin: auto 10px;
@@ -148,7 +147,7 @@ header h1{
 #turn-indicator {
     margin-bottom: 20px;
     padding: 10px;
-    font-size: 48px;
+    font-size: 4vw;
     font-weight: bold;
     text-shadow: 0px 0px 5px white;
 }
@@ -182,7 +181,7 @@ header h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 3vw;
     cursor: pointer;
     transform: rotate(90deg); 
     transition: transform 1.5s ease-in-out;
@@ -267,7 +266,7 @@ header h1{
     align-items: flex-end;
     justify-content: flex-end;
     transform: rotate(90deg);
-    pointer-events: none;
+    pointer-events: none; /* esto evita que el raton pueda interactuar con la clase */
         
 }
 .letter .rotates{
@@ -348,7 +347,7 @@ footer{
     align-items: center;
     gap: 10px;
     margin: 10px;
-    font-size: 1rem;
+    font-size: 1vw;
 }
 .info{
     display: flex;
@@ -357,7 +356,7 @@ footer{
     justify-content: space-around;
     gap: 10px;
     margin: 5px;
-    font-size: 1rem;
+    font-size: 1vw;
     color:#aaa;
 }
 .info-bottom .info{
@@ -432,4 +431,5 @@ footer{
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+
   
