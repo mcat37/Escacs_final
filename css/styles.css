@@ -55,7 +55,7 @@ header{
     font-size: 2rem;
 }
 h1{
-    font-size: 48px;
+    font-size: 3vw;
     margin: 10px auto;
     font-weight: 600;
     color: rgb(255, 255, 255);
@@ -116,8 +116,8 @@ header h1{
     height: max-content ;
     display: grid;
     /* aqui podemos elegir el tamaño del tablero */
-    grid-template-columns: repeat(8, 4.25vw);  /* usamos vh para que se vuelva responsive */
-    grid-template-rows: repeat(8, 4.25vw);
+    grid-template-columns: repeat(8, 4vw);  /* usamos vh para que se vuelva responsive */
+    grid-template-rows: repeat(8, 4vw);
     gap: 0;
     border: 5px solid #000000;
     transform: rotate(-90deg); /* Rotate the board */
@@ -129,7 +129,7 @@ header h1{
 #historial{
     display: grid;
     grid-template-columns: repeat(2, 8vw);
-    grid-template-rows: repeat(1, 30vw);
+    grid-template-rows: repeat(1, 32vw);
     background-color: rgb(255, 255, 255);
     gap: 2px;
     margin: auto 10px;
@@ -140,7 +140,7 @@ header h1{
     overflow-y:auto;
     box-shadow: 0px 0px 15px black;
     text-shadow: 0px 0px 5px white;
-    font-size: 18px;
+    font-size: 1dvw;
     font-weight: bold;
 
 }
@@ -259,7 +259,7 @@ header h1{
 .letter{
     width: 50px;
     height: 58px;
-    font-size: 12px;
+    font-size: 0.745dvw;
     font-weight: bold;
     display: flex;
     position: absolute;
@@ -276,7 +276,7 @@ header h1{
 .number{
     width: 50px;
     height: 50px;
-    font-size: 12px;
+    font-size: 0.75dvw;
     font-weight: bold;
     display: flex;
     position: absolute;

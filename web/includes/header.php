@@ -33,5 +33,5 @@
             </div> 
         </div> -->
     </div>
-    <div onclick="openNav()">MENU</div>
+    <div onclick="openNav()"><button type="button">MENU</div></button>
 </header>

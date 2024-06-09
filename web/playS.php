@@ -22,7 +22,7 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
                 
                 <div id="turn-indicator">Turno: Blancas</div>
                 <h1 class="h3">
-                    Muy bienvenidxs <?php echo $_SESSION['nom_public'] ?>
+                    Benvingut/da <?php echo $_SESSION['nom_public'] ?>
                 </h1>
                 <div class="info-top">
                     <div class="info">
