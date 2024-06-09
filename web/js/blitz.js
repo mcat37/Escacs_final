@@ -398,11 +398,11 @@
             const fromX = parseInt(piece.parentElement.dataset.x, 10);
             const fromY = parseInt(piece.parentElement.dataset.y, 10);
             if (isValidMove(pieceType, opponentColor, fromX, fromY, kingX, kingY)) {
-                king.classList.add("check");
+                king.classList.add(color === 'white' ? "checkW" : "checkB");
                 return true;  //rey en jake
             }
         }
-        king.classList.remove("check");
+        king.classList.remove("checkB", "checkW");
         return false;
     }
     function updateTurnIndicator() {
