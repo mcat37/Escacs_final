@@ -102,8 +102,8 @@
         playTimer();
         clearInterval(intervaloNegro);
         clearInterval(intervaloBlanco);
-        blancas.innerHTML = "Blancas : 03:00"; //
-        negras.innerHTML = "Negras : 03:00"; //
+        blancas.innerHTML = "03:00"; //
+        negras.innerHTML = "03:00"; //
         negras.classList.remove("blink-last"); //
         blancas.classList.remove("blink-last"); //
         negras.classList.remove("blink"); //
@@ -262,6 +262,11 @@
             playTimer();
             selectedPiece = null;
             console.log(fromX, fromY, toX, toY);
+            if (isCheckmate(color === 'white' ? 'black' : 'white')) {
+                // Aquí puedes agregar la lógica para manejar el jaque mate, por ejemplo, mostrar un mensaje de fin de juego
+                console.log("¡Jaque mate! El juego ha terminado.");
+            }
+                
             
         }
     }
@@ -390,20 +395,58 @@
             return false;
         }
     }
-    function isKingInCheck(color) {
-        const king = document.querySelector(`.piece[data-type="Rey"][data-color="${color}"]`);
+    function isCheckmate(color) {
+        const king = Array.from(document.querySelectorAll('.piece')).find(piece => piece.dataset.type === 'Rey' && piece.dataset.color === color);
         const kingX = parseInt(king.parentElement.dataset.x, 10);
         const kingY = parseInt(king.parentElement.dataset.y, 10);
-        const opponentColor = color === "white" ? "black" : "white";
-        
-        const pieces = document.querySelectorAll(`.piece[data-color="${opponentColor}"]`);
-        for (const piece of pieces) {
-            const pieceType = piece.dataset.type;
+    
+        // Verificar si el rey está en jaque
+        if (!isKingInCheck(color)) {
+            return false; // El rey no está en jaque, por lo que no puede haber jaque mate
+        }
+    
+        // Verificar si el rey puede escapar del jaque moviéndose a una casilla segura
+        for (let i = kingX - 1; i <= kingX + 1; i++) {
+            for (let j = kingY - 1; j <= kingY + 1; j++) {
+                if (isValidMove('Rey', color, kingX, kingY, i, j) && !isKingInCheck(color)) {
+                    console.log("el rey puede escapar");
+                    return false; // El rey puede moverse a una casilla segura, no hay jaque mate
+                }
+            }
+        }
+    
+        // Verificar si alguna pieza puede capturar a la pieza que amenaza al rey
+        const opponentColor = color === 'white' ? 'black' : 'white';
+        const opponentPieces = Array.from(document.querySelectorAll('.piece')).filter(piece => piece.dataset.color === opponentColor);
+        for (const piece of opponentPieces) {
             const fromX = parseInt(piece.parentElement.dataset.x, 10);
             const fromY = parseInt(piece.parentElement.dataset.y, 10);
-            if (isValidMove(pieceType, opponentColor, fromX, fromY, kingX, kingY)) {
+            if (isValidMove(piece.dataset.type, opponentColor, fromX, fromY, kingX, kingY) && !isKingInCheck(color)) {
+                console.log("una pieza puede capturar a la pieza que amenaza al rey");
+                return false; // Una pieza puede capturar a la pieza que amenaza al rey, no hay jaque mate
+            }
+        }
+    
+        // Si ninguna de las condiciones anteriores se cumple, entonces el jugador está en jaque mate
+        console.log("el rey no puede escapar del jaque moviéndose a una casilla segura");
+        return true;
+    }
+    
+
+    function isKingInCheck(color) {
+        const king = Array.from(document.querySelectorAll('.piece')).find(piece => piece.dataset.type === 'Rey' && piece.dataset.color === color);
+        const kingX = parseInt(king.parentElement.dataset.x, 10);
+        const kingY = parseInt(king.parentElement.dataset.y, 10);
+        
+        const opponentColor = color === 'white' ? 'black' : 'white';
+        const opponentPieces = Array.from(document.querySelectorAll('.piece')).filter(piece => piece.dataset.color === opponentColor);
+    
+        for (const piece of opponentPieces) {
+            const fromX = parseInt(piece.parentElement.dataset.x, 10);
+            const fromY = parseInt(piece.parentElement.dataset.y, 10);
+            if (isValidMove(piece.dataset.type, opponentColor, fromX, fromY, kingX, kingY)) {
                 king.classList.add(color === 'white' ? "checkW" : "checkB");
-                return true;  //rey en jake
+                return true;
             }
         }
         king.classList.remove("checkB", "checkW");
