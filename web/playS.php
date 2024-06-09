@@ -21,9 +21,9 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
                 <canvas id="canv"></canvas>
                 
                 <div id="turn-indicator">Turno: Blancas</div>
-                <h3 class="h3">
+                <h1 class="h3">
                     Muy bienvenidxs <?php echo $_SESSION['nom_public'] ?>
-                </h3>
+                </h1>
                 <div class="info-top">
                     <div class="info">
                         <div class="info-item">
@@ -96,6 +96,7 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
 
 <script src="js/script.js"></script>
 <script src="js/matrix.js"></script>
+<script src="js/options.js"></script>
 </body>
 </html>
 <?php else: ?>

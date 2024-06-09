@@ -4,18 +4,29 @@ const ctx = canvas.getContext('2d');
 const w = canvas.width = document.body.offsetWidth;
 const h = canvas.height = document.body.offsetHeight;
 const cols = Math.floor(w / 10) + 1;
-const ypos = Array(cols).fill(0);
+const ypos = Array(cols).fill(0); 
 
-ctx.fillStyle = '#000';
+ctx.fillStyle = '#000'; //color inicial de fondo 
 ctx.fillRect(0, 0, w, h);
 
 function matrix () {
-  ctx.fillStyle = '#fff1';
+  if (!canvas.classList.contains('dark-theme')){
+//dark theme
+  ctx.fillStyle = '#ddd4'; //color del fondo final y velocidad de la opacidad de la pieza
   ctx.fillRect(0, 0, w, h);
-  
-  ctx.fillStyle = '#777';
+
+  ctx.fillStyle = '#000'; //color de la pieza
   ctx.font = '37pt monospace';
-  
+}
+else{
+  ctx.fillStyle = '#0004'; //color del fondo final y velocidad de la opacidad de la pieza
+  ctx.fillRect(0, 0, w, h);
+
+  ctx.fillStyle = '#fff'; //color de la pieza
+  ctx.font = '37pt monospace';
+
+}
+
   ypos.forEach((y, ind) => {
     const text = "♔♕♖♗♘♙";
     const text2 = text.charAt(Math.random()*6);
@@ -26,4 +37,4 @@ function matrix () {
   });
 }
 
-setInterval(matrix, 70);
+setInterval(matrix, 100);

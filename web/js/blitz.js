@@ -1,6 +1,6 @@
 //creacion inicial del juego ((tablero, piezas))
 
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
     const chessboard = document.getElementById("chessboard");
     const newGame = document.getElementById("new-game");
     const historialLeft = document.getElementById('left-historial');
@@ -93,10 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
         chessboard.innerHTML = "";
         historialLeft.textContent = ""; //revisar
         historialRight.textContent = ""; //revisar
-        // falta poner aqui el reinico del timer
         createBoard();
         placePieces();
         whiteTurn = true;
+        // falta poner aqui el reinico del timer
+        tiempoTotalBlanco = 60 * 3; //revisar el
+        tiempoTotalNegro = 60 * 3; //revisar el
+        playTimer();
+        clearInterval(intervaloNegro);
+        clearInterval(intervaloBlanco);
+        blancas.innerHTML = "Blancas : 03:00"; //
+        negras.innerHTML = "Negras : 03:00"; //
+
+        //Reinicio del indicador de turno
         updateTurnIndicator();
         num = 1;
         chessboard.style.transform = "rotate(-90deg)";
@@ -311,8 +320,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     return true;
                 }
-            case "Torre":
-               return fromX === toX || fromY === toY; //original
+                case "Torre":
+                    if (fromX === toX) {
+                        for (let y = minY + 1; y < maxY; y++) {
+                            if (isObstacle(fromX, y)) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    } else if (fromY === toY) {
+                        for (let x = minX + 1; x < maxX; x++) {
+                            if (isObstacle(x, fromY)) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
 
             case "Alfil":
                 if (Math.abs(toX - fromX) === Math.abs(toY - fromY)) {
@@ -401,18 +427,17 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("¡Comienza el juego!");// Iniciar contador para el jugador blanco
     
 
-    // Variables
-    let tiempoTotalBlanco = 60 * 3; // 3 minutos en segundos para el jugador blanco
-    let tiempoTotalNegro = 60 * 3; // 3 minutos en segundos para el jugador negro
-    const incremento = 1; // Un segundo de incremento por movimiento
-    let intervaloBlanco; // Variable para el intervalo del jugador blanco
-    let intervaloNegro; // Variable para el intervalo del jugador negro
     // Función para iniciar el contador de un jugador
     blancas = document.getElementById("countdown1");
     negras = document.getElementById("countdown2");
+    let intervaloBlanco; // Variable para el intervalo del jugador blanco
+    let intervaloNegro; // Variable para el intervalo del jugador negro
+    let tiempoTotalBlanco = 60 * 3; // 3 minutos en segundos para el jugador blanco
+    let tiempoTotalNegro = 60 * 3; // 3 minutos en segundos para el jugador negro
     
     function playTimer() {
-        
+        // Variables
+        const incremento = 1; // Un segundo de incremento por movimiento
         clearInterval(intervaloNegro);
         clearInterval(intervaloBlanco);
         if (!whiteTurn) {
@@ -456,7 +481,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }   
     }
    
-});    
+// });    
 
 // }
 // );

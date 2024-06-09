@@ -18,11 +18,37 @@
 //       });
 //     };
 
-function on() {
-    document.getElementById("overlay").style.display = "grid";
-  }
+// function on() {
+//     document.getElementById("overlay").style.display = "grid";
+//   }
   
-  function off() {
-    document.getElementById("overlay").style.display = "none";
+//   function off() {
+//     document.getElementById("overlay").style.display = "none";
+//   }
+//   off();
+const theme = document.getElementById("theme");
+const canvTheme = document.getElementById("canv");
+const checkbox = document.getElementById("checkbox");
+
+  function dark(){
+    // document.getElementById("chessboard").style.backgroundColor = "black";
+    // document.getElementById("chessboard").style.color = "white";
+    document.getElementById("turn-indicator").style.color = "white";
+    document.getElementById("canv").classList.add('dark-theme');
+
+    }
+    function light(){
+      // document.getElementById("chessboard").style.backgroundColor = "white";
+      // document.getElementById("chessboard").style.color = "black";
+      document.getElementById("turn-indicator").style.color = "black";
+      document.getElementById("canv").classList.remove('dark-theme');
+      }
+checkbox.addEventListener("click", () => {
+    if(checkbox.checked){
+    dark();
+    }
+  else{
+    light();
   }
-  off();
+
+});

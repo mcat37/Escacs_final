@@ -94,6 +94,7 @@ if(isset($_SESSION['id'])&& isset($_SESSION['nom_public'])):?>
 </main>
 <script src="js/blitz.js"></script>
 <script src="js/matrix.js"></script>
+<script src="js/options.js"></script>
 
 </body>
 </html>

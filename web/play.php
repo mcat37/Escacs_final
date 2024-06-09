@@ -88,5 +88,6 @@
 </main>
 <script src="js/matrix.js"></script>
 <script src="js/script.js"></script>
+<script src="js/options.js"></script>
 </body>
 </html>
